@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ComicController;
+
 Route::get('/', function () {
 
     $menuLinks = [
@@ -132,3 +134,5 @@ return view('pages.welcome', compact('menuLinks', 'comics', 'menuItems', 'menuLi
 Route::get('/chi-siamo', function () {
     return view('subpages.about');
 });
+
+Route::resource('comics', ComicController::class);

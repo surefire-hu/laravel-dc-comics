@@ -13,6 +13,13 @@
                 <div class="col-2">
                     <img src="{{ $element['thumb'] }}" alt="{{ $element['title'] }}">
                     <h5>{{ $element['title'] }}</h5>
+                    <a href="{{ route('comics.show', $element['id']) }}">View</a>
+                    <a href="{{ route('comics.edit', $element['id']) }}">Edit</a>
+                    <form action="{{ route('comics.destroy', $element['id']) }}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this comic?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" style="color: red;">Delete</button>
+                    </form>
                 </div>
             @endforeach
         </div>
@@ -29,6 +36,7 @@
             </ul>
         </div>
     </div>
+    <a href="{{ route('comics.create') }}">Add New Comic</a>
 </main>
 
 @endsection
